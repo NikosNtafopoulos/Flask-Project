@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>BlogPost Page!</h1>
+    {% for post in posts %}
+        <h5>{{post.title}} publish on {{post.date_posted}}</h5>
+        <p>{{post.content}}</p>
+    {% endfor %}
+
+
+{% endblock content %}

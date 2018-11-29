@@ -1,0 +1,5 @@
+secret_key.txt
+flaskblog/__init__.pyc
+flaskblog/forms.pyc
+models.pyc
+routes.pyc
