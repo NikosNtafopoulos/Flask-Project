@@ -3,3 +3,5 @@ flaskblog/__init__.pyc
 flaskblog/forms.pyc
 models.pyc
 routes.pyc
+.idea/
+flaskblog/site.db
