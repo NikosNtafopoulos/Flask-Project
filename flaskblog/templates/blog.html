@@ -2,17 +2,31 @@
 
 {% block content %}
     <h1>BlogPost Page!</h1>
-    {% for post in posts %}
+    {% for post in posts.items %}
 <article class="media content-section">
     <img class="rounded-circle" src="{{ url_for('static',filename='profile_imgs/'+post.author.image_file) }}" alt="">
         <div class="container">
             <h3><a href="{{ url_for('post',post_id=post.id) }}">{{post.title}}</a></h3>
             <p>{{post.content}}</p>
+            <a href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+
         <small class="text-muted">{{post.title}} by {{ post.author.username }} publish on {{post.date_posted.strftime('%Y-%m-%d')}}</small>
 
         </div>
     </article>
     {% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('blog', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('blog', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+
+    {% endif %}
+
+{% endfor %}
 
 
 {% endblock content %}
